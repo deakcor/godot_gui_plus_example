@@ -1,0 +1,3 @@
+[submodule "src/addons/godot_gui_plus"]
+	path = src/addons/godot_gui_plus
+	url = https://github.com/deakcor/godot_gui_plus.git
