@@ -9,19 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
-"class": "MultiStyleboxContainer",
+"base": "HBoxContainer",
+"class": "HBoxStyleBoxContainer",
 "language": "GDScript",
-"path": "res://addons/godot_gui_plus/class/container/multi_stylebox_container.gd"
+"path": "res://addons/godot_gui_plus/class/container/h_box_stylebox_container.gd"
+}, {
+"base": "Reference",
+"class": "StyleboxContainer",
+"language": "GDScript",
+"path": "res://addons/godot_gui_plus/class/container/stylebox_container.gd"
 }, {
 "base": "Tree",
 "class": "TreePlus",
 "language": "GDScript",
 "path": "res://addons/godot_gui_plus/class/tree/tree_plus.gd"
+}, {
+"base": "VBoxContainer",
+"class": "VBoxStyleBoxContainer",
+"language": "GDScript",
+"path": "res://addons/godot_gui_plus/class/container/v_box_stylebox_container.gd"
 } ]
 _global_script_class_icons={
-"MultiStyleboxContainer": "",
-"TreePlus": ""
+"HBoxStyleBoxContainer": "",
+"StyleboxContainer": "",
+"TreePlus": "",
+"VBoxStyleBoxContainer": ""
 }
 
 [application]

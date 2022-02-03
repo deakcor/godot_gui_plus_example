@@ -6,6 +6,11 @@ onready var tree_plus:TreePlus = get_node_or_null(tree_plus_path)
 export(NodePath) var search_path
 onready var search := get_node_or_null(search_path)
 
+export(NodePath) var button_custom_filter_path
+onready var button_custom_filter := get_node_or_null(button_custom_filter_path)
+
+export(NodePath) var buttons_cont_path
+onready var buttons_cont := get_node_or_null(buttons_cont_path)
 
 class Item:
 	var text := ""
@@ -63,7 +68,8 @@ func reset_tree():
 		new_tree_item.set_text(0,item.text)
 		new_tree_item.set_metadata(0,item)
 		new_tree_item.set_editable(0,true)
-	tree_plus.finish_init(search.text)
+		new_tree_item.set_icon(0,load("res://scene/main.theme::1436"))
+	tree_plus.finish_init(search.text,button_custom_filter.pressed)
 
 
 func _on_search_text_changed(_new_text):
@@ -86,7 +92,26 @@ func _on_popup_menu2_index_pressed(index):
 			match index:
 				0:
 					items.push_back(Item.new("new_item",item))
-					
+					reset_tree()
 				1:
+					tree_plus.toggle_collapse_all(tree_item)
+				2:
 					items.erase(item)
-			reset_tree()
+					reset_tree()
+
+
+func _on_button_custom_filter_pressed():
+	reset_tree()
+
+
+func _on_button_pressed():
+	var tmp:=Button.new()
+	tmp.name="Button"
+	tmp.rect_min_size.y=40
+	buttons_cont.add_child_below_node(buttons_cont.get_child(buttons_cont.get_child_count()-1),tmp,true)
+	tmp.text=tmp.name
+
+
+func _on_button_delete_pressed():
+	if buttons_cont.get_child_count()>3:
+		buttons_cont.remove_child(buttons_cont.get_child(buttons_cont.get_child_count()-1))
